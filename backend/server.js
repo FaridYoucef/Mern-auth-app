@@ -10,6 +10,9 @@ const port = process.env.PORT || 5000;
 connectDB()
 const app = express();
 
+app.use(express.json()); // to parse incoming request (!indefined)
+app.use(express.urlencoded({ extended: true })); //to parse URL encoded data submition exp from forms
+
 app.use('/api/users', userRoutes);
 
 app.get('/', (req, res) => res.send('Server is ready'));
