@@ -2,10 +2,10 @@ import asyncHandler from "express-async-handler";
 import User from "../models/userModel.js";
 import generateToken from "../utils/generateToken.js";
 
+
 // auth user
 // route  POST /api/users/auth
 // Public
-
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
@@ -26,10 +26,10 @@ const authUser = asyncHandler(async (req, res) => {
   res.status(200).json({ message: "Auth User hey" });
 });
 
+
 // register a new user
 // route  POST /api/users/
 // Public
-
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -60,10 +60,10 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 
+
 // logout  user
 // route  POST /api/users/
 // Public
-
 const logoutUser = asyncHandler(async (req, res) => {
   res.cookie("jwt", "", {
     httpOnly: true,
@@ -74,12 +74,17 @@ const logoutUser = asyncHandler(async (req, res) => {
 
 
 
+
 //Get user profile
 // route  Get/api/users/profile
 // Private
-
 const getUserProfile = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: "User Profile" });
+  const user = {
+    _id: req.user._id,
+    name: req.user.name,
+    email:req.user.email
+  }
+  res.status(200).json(user)
 });
 
 //update user profile
