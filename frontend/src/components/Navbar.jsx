@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { PiSignInBold } from "react-icons/pi";
 import { IoHomeOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -16,11 +17,12 @@ const Navbar = () => {
           <ul className="flex gap-5 cursor-pointer text-white ">
             <li className=" hover:border-b-2 border-gray-200 flex gap-1 items-center">
               <PiSignInBold />
-              <a href="/">Sign Up</a>
+
+              <Link to={"signup"}>Sign Up</Link>
             </li>
             <li className="hover:border-b-2 border-gray-200 flex gap-1 items-center ">
               <PiSignInBold />
-              <a href="/">Sign In</a>
+              <Link to={"/signin"}>Sign In</Link>
             </li>
           </ul>
         </div>
@@ -39,20 +41,22 @@ const Navbar = () => {
           <div className="border-b border-gray-600">
             <li className="p-6 text-xl  hover:bg-[#dddce60a] hover:text-white rounded-full flex gap-2 items-center">
               <IoHomeOutline />
-              <a href="">Home</a>
+
+              <Link to={"/"}>Home</Link>
             </li>
           </div>
 
           <div className="border-b border-gray-600">
             <li className="p-6 text-xl  hover:bg-[#dddce60a] hover:text-white rounded-full flex gap-2 items-center">
               <PiSignInBold />
-              <a href="">Sign up</a>
+              <Link to={"/signup"}>Sign up</Link>
             </li>
           </div>
           <div className="border-b border-gray-600">
             <li className="py-6 text-xl px-5 hover:bg-[#dddce60a] hover:text-white rounded-full flex gap-2 items-center">
               <PiSignInBold />
-              <a href="">Sing in</a>
+
+              <Link to={"/signin"}>Sing in</Link>
             </li>
           </div>
         </ul>
