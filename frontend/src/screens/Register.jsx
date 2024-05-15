@@ -1,7 +1,15 @@
-import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Register = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="flex justify-center items-center h-screen  ">
       <form className=" max-w-md  p-10 bg-slate-100 rounded-xl  flex flex-col shadow-lg">
@@ -48,7 +56,9 @@ const Register = () => {
         </button>
         <p>
           Already have an account?{" "}
-          <Link to={'/signin'} className="text-sm text-blue-500">sign in</Link>
+          <Link to={"/signin"} className="text-sm text-blue-500">
+            sign in
+          </Link>
         </p>
       </form>
     </div>
