@@ -25,7 +25,7 @@ const Login = () => {
         />
 
         <button className="my-5 py-2 text-white bg-[#292929] hover:text-slate-300 rounded-full w-32 mx-auto">
-          Sign In
+          Sign in
         </button>
         <p>
           Don't have an account?{" "}
