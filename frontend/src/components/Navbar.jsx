@@ -5,15 +5,32 @@ import { PiSignInBold } from "react-icons/pi";
 import { IoHomeOutline } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useLogoutMutation } from "../slices/userApiSlice";
+import { logout } from "../slices/authSlice";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [nav, setNav] = useState(false);
-  const handleClick = () => setNav(!nav);
 
   const { userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const handleClick = () => setNav(!nav);
+
+  const [logoutApiCall] = useLogoutMutation();
+
+  const logoutHandler = async () => {
+    try {
+      await logoutApiCall().unwrap();
+      dispatch(logout());
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  
   return (
     <>
       <div className=" relative bg-[#292929] w-full h-[50px] items-center flex justify-between px-10  ">
@@ -37,7 +54,8 @@ const Navbar = () => {
                   Profile
                 </a>
                 <a
-                  href="logout"
+                  onClick={logoutHandler}
+                  href=""
                   className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
                 >
                   Logout
