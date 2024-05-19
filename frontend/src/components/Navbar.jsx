@@ -19,12 +19,11 @@ const Navbar = () => {
   const handleClick = () => setNav(!nav);
 
   const [logoutApiCall] = useLogoutMutation();
-
   const logoutHandler = async () => {
     try {
       await logoutApiCall().unwrap();
       dispatch(logout());
-      navigate("/");
+      navigate("/signin");
     } catch (err) {
       console.log(err);
     }

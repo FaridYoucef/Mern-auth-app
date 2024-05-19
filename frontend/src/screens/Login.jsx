@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCredentials } from "../slices/authSlice";
 import { toast } from "react-toastify";
 import { useLoginMutation } from "../slices/userApiSlice";
+import Loader from "../components/Loader";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,8 +15,8 @@ const Login = () => {
   const dispatch = useDispatch();
 
   //fetching data to login
-
   const [login, isLoading] = useLoginMutation();
+
   // to get the user data from the userInfo in the reducer we use useSelector
   const { userInfo } = useSelector((state) => state.auth);
 
@@ -68,6 +70,7 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
+        {/* {isLoading && <Loader />} */}
         <button className="my-5 py-2 text-white bg-[#292929] hover:text-slate-300 rounded-full w-32 mx-auto">
           Sign in
         </button>
