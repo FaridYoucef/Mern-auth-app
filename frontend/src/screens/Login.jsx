@@ -26,7 +26,7 @@ const Login = () => {
     if (userInfo) {
       navigate("/");
     }
-  }, [navigate, userInfo]);
+  }, [navigate, userInfo]);                                                       
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,7 +35,7 @@ const Login = () => {
       dispatch(setCredentials({ ...res }));
       navigate("/");
     } catch (err) {
-      toast.error(err.data.message || err.message);
+      toast.error(err?.data?.message || err.message);
     }
     // console.log({ userInfo });
   };
